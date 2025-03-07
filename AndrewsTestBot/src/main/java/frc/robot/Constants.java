@@ -5,6 +5,7 @@
 package frc.robot;
 
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -51,12 +52,32 @@ public final class Constants {
   }
   public static class ArmConstants{
 
-      public static final int armSparkID = 0;  //change
-      public static final MotorType armMotorType = MotorType.kBrushless;
+      public static final int armRotationID = 0;  //change
 
-      public static final boolean isInverted = true; //change
 
+      /**
+       * 
+       * All of the things for the Arm rotating
+       */
+      public static final MotorType armRotationMotorType = MotorType.kBrushless;
+      //numbers for PID. CHANGE!!!
+      public static double pVlaue = 0.0;
+      public static double iVlaue = 0.0;
+      public static double dVlaue = 0.0;
+
+      public static boolean armRotatorInverted = false; //change
+      public static IdleMode armRotatorIdleMode = IdleMode.kBrake;
+
+
+      
       public static final double ratio = 1/48;
+
+      public static final int armRollerID = 0; //change
+      public static final MotorType armRollerMotorType = MotorType.kBrushless;
+
+
+
+
 
   }
 }

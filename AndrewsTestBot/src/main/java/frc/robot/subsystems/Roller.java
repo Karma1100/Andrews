@@ -15,8 +15,8 @@ public class Roller extends SubsystemBase{
     private static Roller roller;
 
     private static SparkMax rightRollerSpark = new SparkMax(RollerConstant.rightRollerID, MotorType.kBrushed);
-    private static SparkFlex leftRollerSpark = new SparkFlex(RollerConstant.leftRollerID, MotorType.kBrushless);
-    
+    //private static SparkFlex leftRollerSpark = new SparkFlex(RollerConstant.leftRollerID, MotorType.kBrushless);
+
     private final SparkMaxConfig rightConfig;
     private final SparkFlexConfig leftConfig;
     
@@ -31,13 +31,12 @@ public class Roller extends SubsystemBase{
 
         leftConfig.follow(rightRollerSpark);
 
-
-
-
-        
+        rightRollerSpark.configure(rightConfig, null, null);
+        //leftRollerSpark.configure(leftConfig, null, null);
 
 
     }
+
     public static Roller getInstance(){
         if(roller == null){
             roller = new Roller();
@@ -47,12 +46,14 @@ public class Roller extends SubsystemBase{
 
 
     }
+
+
     @Override
     public void periodic(){
 
     }
     public void setRollerSpeed(double speed){
-        rollerSpark.set(speed);
+        rightRollerSpark.set(speed);
     }
     public void RollerCommandStop() {
         setRollerSpeed(RollerConstant.rollerSpeedStop);
