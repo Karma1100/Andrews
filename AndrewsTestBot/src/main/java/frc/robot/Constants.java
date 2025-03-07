@@ -20,21 +20,30 @@ public final class Constants {
     public static final int kDriverControllerPort = 0;
 
   }
+  /**
+   * 
+   * 
+   */
   public static class driveConstants {
     
     public static final int rightFrontDrive = 10;
     public static final int rightBackDrive = 11;
     public static final int leftFrontDrive = 12; 
     public static final int leftBackDrive = 13;
-
-    public static final int rollerController = 20;
-
   }
+  /**
+   * 
+   * For the Joystick Ports
+   */
   public static class ControllerConstants{
 
     public static final int leftControlPort = 0;
     public static final int rightControlPort = 1;
   }
+  /**
+   * Left is redundent. I made it by accedent. Just worry about the right side.
+   * 
+   */
   public static class RollerConstant{
 
     public static final double rollerSpeedIn = .8;
@@ -47,18 +56,19 @@ public final class Constants {
     public static final boolean leftRollerInverted = false; //chnage
     public static final boolean rightRollerInverted = false; //chnage
 
-
-
   }
+
+  /**
+   * 
+   * 
+   */
   public static class ArmConstants{
-
-      public static final int armRotationID = 0;  //change
-
 
       /**
        * 
        * All of the things for the Arm rotating
        */
+      public static final int armRotationID = 0;  //change
       public static final MotorType armRotationMotorType = MotorType.kBrushless;
       //numbers for PID. CHANGE!!!
       public static double pVlaue = 0.0;
@@ -67,17 +77,20 @@ public final class Constants {
 
       public static boolean armRotatorInverted = false; //change
       public static IdleMode armRotatorIdleMode = IdleMode.kBrake;
-
-
       
+      //this is the ratio for arm spinning, arm to motor
       public static final double ratio = 1/48;
+      public static final int vortexEncoderCountPerRev = 42;
 
+      public static final int neoEncoderCountPerRev = 42;
+
+      /**
+       * all of the things for Arm Roller
+       */
       public static final int armRollerID = 0; //change
       public static final MotorType armRollerMotorType = MotorType.kBrushless;
-
-
-
-
+      public static final boolean arnRollerInverted = false;
+      public static final IdleMode armRollerIdel = IdleMode.kCoast;
 
   }
 }

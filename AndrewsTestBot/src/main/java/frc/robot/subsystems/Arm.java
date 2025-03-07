@@ -16,8 +16,8 @@ public class Arm extends SubsystemBase{
     
 
     //Arm Swing
-    private static SparkMax mArmSpark = new SparkMax(ArmConstants.armRotationID, ArmConstants.armRotationMotorType);
-    private static SparkMaxConfig armConfig;
+    private static SparkMax mArmRotator = new SparkMax(ArmConstants.armRotationID, ArmConstants.armRotationMotorType);
+    private static SparkMaxConfig armRotationConfig;
     
 
     //arm roller
@@ -29,19 +29,36 @@ public class Arm extends SubsystemBase{
     
 
     public Arm(){
-        armConfig = new SparkMaxConfig();
+
+
+        armRotationConfig = new SparkMaxConfig();
         mArmRollerConfig = new SparkFlexConfig();
 
+        //CONFIG FOR ROTATION
 
-        armConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder).pid(ArmConstants.pVlaue, ArmConstants.iVlaue, ArmConstants.dVlaue);
+        //this is the PID loop for the arm. Make sure to change the PID  values in constants please
+        armRotationConfig.
+            closedLoop
+                .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
+                .pid(ArmConstants.pVlaue, ArmConstants.iVlaue, ArmConstants.dVlaue);
 
-        armConfig.inverted(ArmConstants.armRotatorInverted).idleMode(ArmConstants.armRotatorIdleMode);
-        mArmSpark.configure(armConfig, null, null);
+        //please check to see if motor is inverted.
+        armRotationConfig
+            .inverted(ArmConstants.armRotatorInverted)
+            .idleMode(ArmConstants.armRotatorIdleMode);
+            
+        mArmRotator
+            .configure(armRotationConfig, null, null);
 
 
+        //CONFIG FOR ROLLER
+        mArmRollerConfig
+            .inverted(ArmConstants.arnRollerInverted)
+            .idleMode(ArmConstants.armRollerIdel);
 
 
-        mArmRoller.configure(mArmRollerConfig, null, null);
+        mArmRoller
+            .configure(mArmRollerConfig, null, null);
     }
     
 
@@ -51,6 +68,11 @@ public class Arm extends SubsystemBase{
         }
             return mArmPosition;
         
+
+    }
+
+    //Roller at the end of the Arm go bur
+    public static void runArmRoller(){
 
     }
 
