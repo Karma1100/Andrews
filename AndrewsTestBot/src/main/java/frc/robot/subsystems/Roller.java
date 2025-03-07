@@ -1,7 +1,10 @@
 package frc.robot.subsystems;
 
+import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.config.SparkFlexConfig;
+import com.revrobotics.spark.config.SparkMaxConfig;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.RollerConstant;
@@ -11,8 +14,26 @@ public class Roller extends SubsystemBase{
 
     private static Roller roller;
 
-    private static SparkMax rollerSpark = new SparkMax(driveConstants.rollerController, MotorType.kBrushed);
+    private static SparkMax rightRollerSpark = new SparkMax(RollerConstant.rightRollerID, MotorType.kBrushed);
+    private static SparkFlex leftRollerSpark = new SparkFlex(RollerConstant.leftRollerID, MotorType.kBrushless);
+    
+    private final SparkMaxConfig rightConfig;
+    private final SparkFlexConfig leftConfig;
+    
+
     public Roller(){
+        rightConfig = new SparkMaxConfig();
+        leftConfig = new SparkFlexConfig();
+
+        rightConfig.inverted(RollerConstant.rightRollerInverted);
+        leftConfig.inverted(RollerConstant.leftRollerInverted);
+
+
+        leftConfig.follow(rightRollerSpark);
+
+
+
+
         
 
 

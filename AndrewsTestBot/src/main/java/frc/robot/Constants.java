@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import com.revrobotics.spark.SparkLowLevel.MotorType;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -28,12 +30,33 @@ public final class Constants {
 
   }
   public static class ControllerConstants{
+
     public static final int leftControlPort = 0;
     public static final int rightControlPort = 1;
   }
   public static class RollerConstant{
+
     public static final double rollerSpeedIn = .8;
     public static final double rollerSpeedOut = -.8;
     public static final double rollerSpeedStop = 0; 
+
+    public static final int leftRollerID = 0;  //change
+    public static final int rightRollerID = 0; //change
+
+    public static final boolean leftRollerInverted = false; //chnage
+    public static final boolean rightRollerInverted = false; //chnage
+
+
+
+  }
+  public static class ArmConstants{
+
+      public static final int armSparkID = 0;  //change
+      public static final MotorType armMotorType = MotorType.kBrushless;
+
+      public static final boolean isInverted = true; //change
+
+      public static final double ratio = 1/48;
+
   }
 }
