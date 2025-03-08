@@ -91,6 +91,8 @@ public final class Constants {
       public static final MotorType armRollerMotorType = MotorType.kBrushless;
       public static final boolean arnRollerInverted = false;
       public static final IdleMode armRollerIdel = IdleMode.kCoast;
+      
+      public static final double rollerSpeed = .9;
 
   }
 }

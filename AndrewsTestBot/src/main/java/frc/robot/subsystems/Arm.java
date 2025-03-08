@@ -46,7 +46,7 @@ public class Arm extends SubsystemBase{
         armRotationConfig
             .inverted(ArmConstants.armRotatorInverted)
             .idleMode(ArmConstants.armRotatorIdleMode);
-            
+
         mArmRotator
             .configure(armRotationConfig, null, null);
 
@@ -59,6 +59,9 @@ public class Arm extends SubsystemBase{
 
         mArmRoller
             .configure(mArmRollerConfig, null, null);
+
+
+        
     }
     
 
@@ -72,14 +75,37 @@ public class Arm extends SubsystemBase{
     }
 
     //Roller at the end of the Arm go bur
+    /**
+     * This function is just in case you need to set the speed directly for some reason.
+     * 
+     * @param speed value between 0-1
+     */
+    public static void setRollerSpeed(double speed){
+        mArmRoller.set(speed);
+    }
+    //for Read ability and for commands
     public static void runArmRoller(){
-
+        setRollerSpeed(ArmConstants.rollerSpeed);
+    }
+    public static void stopArmRoller(){
+        setRollerSpeed(0);
     }
 
 
+    public static void rotateArmByRadian(double angle){
+        //Gear Ratio motor : output 48:1
+        //number of counts per revolution : 42
+        //angle per encoder count = 360 / (48*42) == 360 / 2016 = .1784828953891918691125433812593
+        //rotations wanted = angle / .1784828953891918691125433812593
+
+        
+
+    }
+
+    
     //3 poitions
     public static void position1(){
-
+        //mArmRotator.getEncoder().getPosition()
     }
     
 }
